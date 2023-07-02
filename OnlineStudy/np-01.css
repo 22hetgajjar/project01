@@ -1,0 +1,167 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+  }
+  
+  #form-title {
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  input[type="submit"] {
+    background-color: #4caf50;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #5cbf61;
+  }
+  
+  #error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #toggle-button {
+    background-color: #008CBA;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #toggle-button:hover {
+    background-color: #0077a3;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    max-width: 100%;
+    animation: slide-in 0.5s ease-out;
+  }
+  
+  form h1 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  form label,
+  form input {
+    display: block;
+    width: 100%;
+  }
+  
+  form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  form button:hover {
+    background-color: #45a049;
+  }
+  
+  form p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  form a {
+    color: blue;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  form a:hover {
+    color: #0d6efd;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

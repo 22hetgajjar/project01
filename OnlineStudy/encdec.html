@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My Webpage</title>
+  <style>
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #ffffff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Welcome to My Webpage</h1>
+<!-- Add a button after the text area -->
+<form>
+    <label for="input-text">Enter text:</label><br>
+    <textarea id="input-text" name="input-text" rows="4" cols="50"></textarea><br>
+    <button id="encrypt-btn" type="button">Encrypt</button>
+    <button id="decrypt-btn" type="button">Decrypt</button> <!-- Add a new button -->
+  </form>
+  
+  <!-- Add an empty table to display submitted text and decrypted/encrypted text -->
+  <table id="text-table">
+    <tr>
+      <th>Submitted Text</th>
+      <th>Processed Text</th>
+    </tr>
+  </table>
+  
+  
+  
+  <script>
+const form = document.querySelector('form');
+const input = document.querySelector('#input-text');
+const table = document.querySelector('#text-table');
+const shiftAmount = 3; // Example shift amount
+const encryptBtn = document.querySelector('#encrypt-btn');
+encryptBtn.addEventListener('click', () => {
+  const text = input.value;
+  const processedText = encrypt(text, shiftAmount);
+  input.value = '';
+  // Clear previous rows in the table
+  table.innerHTML = '<tr><th>Submitted Text</th><th>Processed Text</th></tr>';
+  // Add new row with submitted text and processed text
+  const row = table.insertRow(1);
+  const submittedCell = row.insertCell(0);
+  submittedCell.innerHTML = text;
+  const processedCell = row.insertCell(1);
+  processedCell.innerHTML = processedText;
+});
+
+const decryptBtn = document.querySelector('#decrypt-btn'); // Get the new button element
+decryptBtn.addEventListener('click', () => { // Add an event listener to the new button
+  // Loop through all rows in the table (except the header row)
+  for (let i = 1; i < table.rows.length; i++) {
+    const processedCell = table.rows[i].cells[1];
+    const processedText = processedCell.innerHTML;
+    const originalText = decrypt(processedText, shiftAmount); // Decrypt the text
+    processedCell.innerHTML = originalText;
+  }
+});
+
+function encrypt(text, shift) {
+  let result = "";
+  for (let i = 0; i < text.length; i++) {
+    let charCode = text.charCodeAt(i);
+    if (charCode >= 65 && charCode <= 90) {
+      result += String.fromCharCode(((charCode - 65 + shift) % 26) + 65);
+    } else if (charCode >= 97 && charCode <= 122) {
+      result += String.fromCharCode(((charCode - 97 + shift) % 26) + 97);
+    } else {
+      result += text.charAt(i);
+    }
+  }
+  return result;
+}
+
+function decrypt(text, shift) {
+  return encrypt(text, 26 - shift); // Simply reverse the shift amount to decrypt
+}
+
+  </script>
+</body>
+</html>
